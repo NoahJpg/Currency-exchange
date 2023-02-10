@@ -1,11 +1,11 @@
 import CurrencyAPI from './CurrencyAPI.js';
 import { printExchange, printError } from './UILogic.js';
 
-export async function getCurrencyConversion(currencyAmount) {
-  const response = await CurrencyAPI.getCurrency(currencyAmount);
-  if (response.result === "success") {
-    printExchange(response, currencyAmount);
-  } else {
-    printError(response, currencyAmount);
+export async function getCurrencyConversion(currencyType, amount) {
+  const response = await CurrencyAPI.getCurrency();
+  if (!response.conversion_rates[currencyType]) {
+    printError(`Error: The currency "${currencyType}" is not supported.`);
+    return;
   }
+  printExchange(response, currencyType, amount);
 }

@@ -7,6 +7,9 @@ export default class CurrencyAPI {
         const errorMessage = `${response.status} ${response.statusText} ${jsonifiedResponse.message}`;
         throw new Error(errorMessage);
       }
+      if (!jsonifiedResponse.conversion_rates[baseCurrency]) {
+        throw new Error(`Currency ${baseCurrency} does not exist.`);
+      }
       return jsonifiedResponse;
     } catch (error) {
       return error;

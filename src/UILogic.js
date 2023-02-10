@@ -11,11 +11,8 @@ export function printExchange(response, currencyType, amount) {
   document.querySelector('#results').innerText = results; 
 }
 
-export function printError(error, currencyType) {
-  if (error.result !== "success") {
-    document.querySelector('#results').innerText = `There was an error accessing the data for ${currencyType}:`;
-  } else
-    document.querySelector('#results').innerText = `There was an error accessing the data for `;
+export function printError(error) {
+    document.querySelector('#results').innerText = `Error: ${error}`;
 }
 
 window.addEventListener("load", function() {
@@ -28,13 +25,10 @@ window.addEventListener("load", function() {
 async function handleFormSubmission() {
   let amount = document.querySelector('#currency-amount').value;
   let currencyType = document.querySelector('#currency-type').value;
-
   if ((currencyType === 'select') || (!amount)) {
-    document.querySelector('#results').innerText = "Please select fill out both fields";
+    document.querySelector('#results').innerText = "Please fill out both fields.";
     return;
   }
- 
-
   let apiResponse = await CurrencyAPI.getCurrency();
   printExchange(apiResponse, currencyType, amount);
 }
