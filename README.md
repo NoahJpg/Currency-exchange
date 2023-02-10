@@ -4,8 +4,7 @@
 
 #### _brief description_
 
-https:// link
-
+https://github.com/NoahJpg/Currency-exchange.git
 ## Technologies Used
 
 * _HTML_
