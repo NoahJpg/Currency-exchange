@@ -1,13 +1,16 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
 import CurrencyAPI from './CurrencyAPI.js';
+import printError from './UILogic.js'
 
 export async function getCurrencyConverstion(currencyType) {
   const response = await CurrencyAPI.getCurrency(currencyType);
-  printExchange(response, currencyType);
+  if (response.result === "success") {
+    printExchange(response, currencyType);
+  } else {
+    printError(response, currencyType)
+  }
 }
-
 
 
 // USD
