@@ -3,12 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import { getCurrencyConverstion } from "./BusinessLogic.js";
 
-
+  /* eslint-disable no-console */
 export function printExchange(response, currencyAmount) {
-  let values = response.conversion_rates.YEN
-  let results = ``
-  document.querySelector('#exchange').innerText = (`${currencyAmount}: `);
-  response.results
+  let values = response.conversion_rates.JPY;
+  let results = `The converstion from ${currencyAmount} of USD to JPY is ${values} JPY`
+  document.querySelector('#results').innerText = results; 
 }
 
 export function printError(error, currencyType) {

@@ -1,4 +1,4 @@
-# _template repo_
+# _Currency Exchange_
 
 #### By _**Noah Atkinson**_
 

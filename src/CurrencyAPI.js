@@ -1,5 +1,5 @@
 export default class CurrencyAPI {
-  static async getCurrency(currencyAmount) {
+  static async getCurrency() {
     try {
       const response = await fetch (`https://v6.exchangerate-api.com/v6/${process.env.MARKETAUX_KEY}/latest/USD`);
       const jsonifiedResponse = await response.json();
