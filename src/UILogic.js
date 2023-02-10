@@ -21,13 +21,14 @@ export function printError(error, currencyType) {
 window.addEventListener("load", function() {
   document.querySelector("form").addEventListener('submit', async function(event) {
     event.preventDefault();
-    handleFormSubmission();
+    handlePrintExchange();
+    document.querySelector('#currency-amount').value = null;
   });
 });
 
-async function handleFormSubmission() {
+async function handlePrintExchange() {
   let amount = document.querySelector('#currency-amount').value;
   let currencyType = document.querySelector('#currency-type').value;
   let apiResponse = await CurrencyAPI.getCurrency();
-  printExchange(apiResponse, currencyType, amount);
+  printExchange(apiResponse, currencyType, amount)
 }
