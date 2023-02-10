@@ -6,16 +6,6 @@ export async function getCurrencyConverstion(currencyAmount) {
   if (response.result === "success") {
     printExchange(response, currencyAmount);
   } else {
-    printError(response, currencyAmount)
+    printError(response, currencyAmount);
   }
 }
-
-
-// USD
-// convert to
-
-// JPY - japanese yen
-// AUD - australlian dollar
-// EUR - euro
-// MXN - Peso
-// ETB - ethopian Birr
