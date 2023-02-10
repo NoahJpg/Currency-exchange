@@ -29,14 +29,11 @@ async function handleFormSubmission() {
   let amount = document.querySelector('#currency-amount').value;
   let currencyType = document.querySelector('#currency-type').value;
 
-  if (currencyType === 'select') {
-    document.querySelector('#results').innerText = "Please select a currency type.";
+  if ((currencyType === 'select') || (!amount)) {
+    document.querySelector('#results').innerText = "Please select fill out both fields";
     return;
   }
-  if (!amount) {
-    document.querySelector('#results').innerText = "Please enter a valid dollar amount.";
-    return;
-  }
+ 
 
   let apiResponse = await CurrencyAPI.getCurrency();
   printExchange(apiResponse, currencyType, amount);
