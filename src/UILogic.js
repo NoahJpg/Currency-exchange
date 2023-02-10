@@ -1,19 +1,15 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import { getCurrencyConverstion } from "./BusinessLogic.js";
+import CurrencyAPI from './CurrencyAPI';
 
 /* eslint-disable no-console */
-export function printExchange(response, currencyType) {
-  let values = response.conversion_rates[currencyType]
-  console.log(values)
-  let results = `$1.00 = ${values} ${currencyType}`;
+export function printExchange(response, currencyType, amount) {
+  let apiResponse = response.conversion_rates[currencyType];
+  let conversion = apiResponse * amount;
+  let results = `$${amount} USD = ${conversion} ${currencyType}`;
   document.querySelector('#results').innerText = results; 
 }
-
-// export function printExchangedAmount(dollarAmount, printExchange) {
-  
-// }
 
 export function printError(error, currencyType) {
   if (error.result !== "success") {
@@ -22,14 +18,16 @@ export function printError(error, currencyType) {
     document.querySelector('#results').innerText = `There was an error accessing the data for `;
 }
 
-function handleFormSubmission(event) {
-  event.preventDefault();
-  const currencyAmount = document.querySelector('#currency-type').value;
-  document.querySelector('#currency-type').value = null;
-  getCurrencyConverstion(currencyAmount);
-}
-
 window.addEventListener("load", function() {
-  const form = document.querySelector("form");
-  form.addEventListener("submit", handleFormSubmission);
+  document.querySelector("form").addEventListener('submit', async function(event) {
+    event.preventDefault();
+    handleFormSubmission();
+  });
 });
+
+async function handleFormSubmission() {
+  let amount = document.querySelector('#currency-amount').value;
+  let currencyType = document.querySelector('#currency-type').value;
+  let apiResponse = await CurrencyAPI.getCurrency();
+  printExchange(apiResponse, currencyType, amount);
+}
