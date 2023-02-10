@@ -4,12 +4,16 @@ import './css/styles.css';
 import { getCurrencyConverstion } from "./BusinessLogic.js";
 
 /* eslint-disable no-console */
-export function printExchange(response, currencyAmount) {
-  let values = response.conversion_rates.JPY;
-  console.log(values);
-  let results = `The converstion from ${currencyAmount} of USD to JPY is ${values} JPY`;
+export function printExchange(response, currencyType) {
+  let values = response.conversion_rates[currencyType]
+  console.log(values)
+  let results = `$1.00 = ${values} ${currencyType}`;
   document.querySelector('#results').innerText = results; 
 }
+
+// export function printExchangedAmount(dollarAmount, printExchange) {
+  
+// }
 
 export function printError(error, currencyType) {
   if (error.result !== "success") {
