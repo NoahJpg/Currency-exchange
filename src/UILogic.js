@@ -19,7 +19,7 @@ export function printError(error, currencyType) {
 }
 
 window.addEventListener("load", function() {
-  document.querySelector("form").addEventListener('submit', async function(event) {
+  document.querySelector("form").addEventListener('submit', async (event) => {
     event.preventDefault();
     handleFormSubmission();
   });
@@ -28,6 +28,16 @@ window.addEventListener("load", function() {
 async function handleFormSubmission() {
   let amount = document.querySelector('#currency-amount').value;
   let currencyType = document.querySelector('#currency-type').value;
+
+  if (currencyType === 'select') {
+    document.querySelector('#results').innerText = "Please select a currency type.";
+    return;
+  }
+  if (!amount) {
+    document.querySelector('#results').innerText = "Please enter a valid dollar amount.";
+    return;
+  }
+
   let apiResponse = await CurrencyAPI.getCurrency();
   printExchange(apiResponse, currencyType, amount);
 }
