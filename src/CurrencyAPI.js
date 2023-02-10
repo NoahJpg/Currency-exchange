@@ -15,4 +15,4 @@ export default class CurrencyAPI {
       return error;
     }
   }
-}
+} 
