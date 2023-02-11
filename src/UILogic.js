@@ -29,6 +29,8 @@ window.addEventListener("load", function() {
 async function handlePrintExchange() {
   let amount = document.querySelector('#currency-amount').value;
   let currencyType = document.querySelector('#currency-type').value;
+
+  
   let apiResponse = await CurrencyAPI.getCurrency();
   printExchange(apiResponse, currencyType, amount)
 }
