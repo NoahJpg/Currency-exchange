@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyAPI from './CurrencyAPI';
 
-
 export function printExchange(response, currencyType, amount) {
   let apiResponse = response.conversion_rates[currencyType];
   let conversion = apiResponse * amount;
@@ -12,7 +11,7 @@ export function printExchange(response, currencyType, amount) {
 }
 
 export function printError(error) {
-    document.querySelector('#results').innerText = `Error: ${error}`;
+  document.querySelector('#results').innerText = `Error: ${error}`;
 }
 
 window.addEventListener("load", function() {
@@ -33,5 +32,5 @@ async function handlePrintExchange() {
     return;
   }
   let apiResponse = await CurrencyAPI.getCurrency();
-  printExchange(apiResponse, currencyType, amount)
+  printExchange(apiResponse, currencyType, amount);
 }

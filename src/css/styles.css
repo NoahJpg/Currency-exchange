@@ -4,5 +4,20 @@ body {
 }
 
 .container-intro {
-  border: 10px;
+  grid-area : header;
+  color: white;
+  font-size: xx-large;
+  background-color: black;
+  margin-bottom: 200px;
+  padding-right: 200px;
+  padding-left: 200px;
+  animation: color-change 15s infinite;
+}
+
+@keyframes color-change {
+  0% { color: white; }
+  25% { color: green; }
+  50% { color: yellow; }
+  75% { color: red; }
+  100% { color: violet; }
 }
