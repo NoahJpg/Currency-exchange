@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyAPI from './CurrencyAPI';
 
-/* eslint-disable no-console */
+
 export function printExchange(response, currencyType, amount) {
   let apiResponse = response.conversion_rates[currencyType];
   let conversion = apiResponse * amount;

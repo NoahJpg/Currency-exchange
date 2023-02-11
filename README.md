@@ -5,10 +5,7 @@
 #### _A web app that converts USD to other currencies using an API call_
 
 https://github.com/NoahJpg/Currency-exchange.git
-<<<<<<< HEAD
 
-=======
->>>>>>> db49f609c3de4e65c2ae8793cf855320d239575b
 ## Technologies Used
 
 * _HTML_
