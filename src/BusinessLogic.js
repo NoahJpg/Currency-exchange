@@ -9,8 +9,10 @@ export async function getCurrencyConversion(currencyType, amount) {
       return;
     }
     printExchange(response, currencyType, amount);
+    return;
   } catch (error) {
     printError(error.message);
+    return;
   }
 }
 
