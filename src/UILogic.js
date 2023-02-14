@@ -31,6 +31,11 @@ async function handlePrintExchange() {
     document.querySelector('#results').innerText = "Please fill out both fields.";
     return;
   }
-  let apiResponse = await CurrencyAPI.getCurrency();
-  printExchange(apiResponse, currencyType, amount);
+  // add try catch
+  try {
+    let apiResponse = await CurrencyAPI.getCurrency();
+    printExchange(apiResponse, currencyType, amount);
+  } catch (error) {
+    printError(error)
+  }
 }
